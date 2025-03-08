@@ -18,6 +18,6 @@ class BigramLanguageModel(Module):
 
         if not targets: return representation, None
 
-        representation.view(self.batch_size * self.window_size, self.vocab_size)
+        representation.view(self.batch_size * self.window_size, self.vocab_size) # view is in-place
         targets.view(self.batch_size * self.window_size)
         return representation, cross_entropy(representation, targets)
